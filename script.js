@@ -1,19 +1,14 @@
 
 const gameState = {
     board: [
-        [null, null, null],
-        [null, null, null],
-        [null, null, null],
-      ],
-    
-      // Maybe a current Player?
-      // A game status?? 'isPlaying' or 'over'
-      // Any other data your game logic depends on?};  
-    move: 0,
-    gameStatus: 'isPlaying' || 'over',
-    players: ['x', 'o'],
-    player1: 'x',
-    player2: 'o',
+      [null, null, null],
+      [null, null, null],
+      [null, null, null],
+    ],
+    currentPlayer: "x",
+    playerNames: ["Player 1", "Player 2"],
+    currentPlayeridx: 0,
+    wins: { 0: 0, 1: 0 },
     winningCombinations: [
       [0, 1, 2],
       [3, 4, 5],
@@ -26,7 +21,7 @@ const gameState = {
     ]};
   
       const board = document.querySelector(".board");
-  
+    let currentPlayer = 'X';
   
     for (let i = 0; i < 3; i++) {
       for (let j = 0; j < 3; j++) {
@@ -42,14 +37,13 @@ const gameState = {
     // - Remember the concept of event delegation, you only need to put event listeners on parent elements.
     
     board.addEventListener("click", (event) => {
-      // document.getElementByclass("cell").addEventListener("click", placeMarker);
       console.log(event.target);
       const idArray = event.target.id;
       console.log(idArray.split(''));
       const splitArray = idArray.split('');
       const row = parseInt(splitArray[0]);
       const col = parseInt(splitArray[2]); 
-      gameState.board[row][col] = "x";
+      gameState.board[row][col] = "X";
     console.log("Game State: ", gameState);
         renderBoard();
       // Figure out how to get the coordinates off event object (e.target.value)
@@ -67,10 +61,18 @@ const gameState = {
     }
     renderBoard();
   
-    function placeMarker(){
-  
-    }
-    
+    function startNewGame() {
+		score = {
+			"X": 0,
+			"O": 0,
+		};
+		moves = 0;
+		turn = "X";
+		boxes.forEach(function (square) {
+			square.innerHTML = EMPTY;
+		});
+	}
+    startNewGame();
     // ### Rendering the current state of the game information to the DOM
     
     // - Be able to write functions which will loop over your board in state, and reflect the data acordingly to the page
@@ -92,21 +94,25 @@ const gameState = {
     
     // ### What other functions may you need?
     function switchPlayer() {
-      if(gameState.player1 === "x") {
-        gameState.player2 = "o";
-      } else if(gamestate.player === 'player2'){
-        gameState.player1 = "x";
+        if (gameState.currentPlayer === "x") {
+          gameState.currentPlayer = "o";
+        } else if (gameState.currentPlayer === "o") {
+          gameState.currentPlayer = "x";
+        }
+        renderBoard();
+        gameState.currentPlayeridx =
+          (gameState.currentPlayeridx + 1) % gameState.playerNames.length;
+          renderBoard();
       }
-    }
     switchPlayer();
-    
+
     function switchMarkers() {
       gameState.move++;
       if (gameState.move % 2 === 0) {
-        return 'x';
+        return 'X';
       }
       else {
-        return 'o'
+        return 'O'
       }
       }
       switchMarkers();
@@ -115,12 +121,16 @@ const gameState = {
     function makePlayer() {    
     //   const player1 = newPlayer(prompt("Choose player 1 name :")); // Create player 1
     //   const player2 = newPlayer(prompt("Choose player 2 name :")); // Create player 2
-    if(gameState.player1 === "x") {
-    gameState.player2 = "o";
-  } else if(gameState.player === 'player2'){
-    gameState.player1 = "x";
+    if(gameState.currentPlayer === "X") {
+    gameState.player2 = "O";
+  } else if(gameState.currentPlayer === 'player2'){
+    gameState.player1 = "O";
   }};
   makePlayer();
+
+  function resetBoard(){
+    
+  }
     function checkWin() {
       // Maybe this calls other helper functions?
       // checkRow()
