@@ -40,9 +40,10 @@ const board = document.querySelector(".board");
         console.log(event.target.id);
         const row = event.target.id[0];
         const col = event.target.id[2];
-        gameState.board[row][col] = "X";
+        gameState.board[row][col] = gameState.currentPlayer;
         console.log("Game State:", gameState);
         renderBoard();
+        switchPlayer();
     //   console.log(event.target);
     //   const idArray = event.target.id;
     //   console.log(idArray.split(''));
@@ -104,15 +105,8 @@ const board = document.querySelector(".board");
     function switchPlayer() {
         if (gameState.currentPlayer === "X") {
           gameState.currentPlayer = "O";
-        } else {gameState.currentPlayer === "X"};
-          
-        
-        renderBoard();
-        gameState.currentPlayeridx =
-          (gameState.currentPlayeridx + 1) % gameState.playerNames.length;
-          renderBoard();
+        } else {gameState.currentPlayer = "X"};
       }
-    switchPlayer();
 
     function switchMarkers() {
       gameState.move++;
