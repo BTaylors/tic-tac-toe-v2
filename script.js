@@ -5,7 +5,7 @@ const gameState = {
       [null, null, null],
       [null, null, null],
     ],
-    currentPlayer: "x",
+    currentPlayer: "X",
     playerNames: ["Player 1", "Player 2"],
     currentPlayeridx: 0,
     wins: { 0: 0, 1: 0 },
@@ -20,8 +20,8 @@ const gameState = {
       [2, 4, 6]
     ]};
   
-      const board = document.querySelector(".board");
-    let currentPlayer = 'X';
+const board = document.querySelector(".board");
+
   
     for (let i = 0; i < 3; i++) {
       for (let j = 0; j < 3; j++) {
@@ -36,16 +36,24 @@ const gameState = {
     
     // - Remember the concept of event delegation, you only need to put event listeners on parent elements.
     
-    board.addEventListener("click", (event) => {
-      console.log(event.target);
-      const idArray = event.target.id;
-      console.log(idArray.split(''));
-      const splitArray = idArray.split('');
-      const row = parseInt(splitArray[0]);
-      const col = parseInt(splitArray[2]); 
-      gameState.board[row][col] = "X";
-    console.log("Game State: ", gameState);
+    board.addEventListener("click", (event)=>{
+        console.log(event.target.id);
+        const row = event.target.id[0];
+        const col = event.target.id[2];
+        gameState.board[row][col] = "X";
+        console.log("Game State:", gameState);
         renderBoard();
+    //   console.log(event.target);
+    //   const idArray = event.target.id;
+    //   console.log(idArray.split(''));
+
+    //   const splitArray = idArray.split('');
+    // //   const row = parseInt(splitArray[0]);
+    // //   const col = parseInt(splitArray[2]); 
+    //   gameState.board[row][col] = "X";
+    // console.log("Game State: ", gameState);
+    //     renderBoard();
+    //     switchPlayer();
       // Figure out how to get the coordinates off event object (e.target.value)
       // Use those coordinates to reference indexes in our gameState.board
       // Set the position in our board to the current player
@@ -94,11 +102,11 @@ const gameState = {
     
     // ### What other functions may you need?
     function switchPlayer() {
-        if (gameState.currentPlayer === "x") {
-          gameState.currentPlayer = "o";
-        } else if (gameState.currentPlayer === "o") {
-          gameState.currentPlayer = "x";
-        }
+        if (gameState.currentPlayer === "X") {
+          gameState.currentPlayer = "O";
+        } else {gameState.currentPlayer === "X"};
+          
+        
         renderBoard();
         gameState.currentPlayeridx =
           (gameState.currentPlayeridx + 1) % gameState.playerNames.length;
