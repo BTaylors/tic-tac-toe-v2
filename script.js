@@ -68,8 +68,8 @@ const gameState = {
 		};
 		moves = 0;
 		turn = "X";
-		boxes.forEach(function (square) {
-			square.innerHTML = EMPTY;
+		boxes.forEach(function (cell) {
+			cell.innerHTML = EMPTY;
 		});
 	}
     startNewGame();
