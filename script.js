@@ -8,20 +8,24 @@ let gameState = {
     currentPlayer: "X",
     playerNames: ["Player 1", "Player 2"],
     currentPlayeridx: 0,
+    player1score: 0,
+    player2score: 0,
     wins: { 0: 0, 1: 0 },};
-    winningCombinations: [
-      [0, 1, 2],
-      [3, 4, 5],
-      [6, 7, 8],
-      [0, 3, 6],
-      [1, 4, 7],
-      [2, 5, 8],
-      [0, 4, 8],
-      [2, 4, 6]
-    ]
+    const winningCombinations = [
+      [0-0, 0-1, 0-2],
+      [1-0, 1-1, 1-2],
+      [2-0, 2-1, 2-2],
+      [0-0, 1-0, 2-0],
+      [1-0, 1-1, 1-2],
+      [2-0, 2-1, 2-2],
+      [0-0, 1-1, 2-2],
+      [0-2, 1-1, 2-0]
+    ];
 let board = document.querySelector(".board");
 let currentPlayer = "X";
 let win;
+// const cell = Array.from(document.querySelectorAll('.board div'))
+
 let reset = document.querySelector("#reset")
     for (let i = 0; i < 3; i++) {
       for (let j = 0; j < 3; j++) {
@@ -51,8 +55,10 @@ function startNewGame(){
   [null ,null, null],
   ];
         renderBoard();
-    };
-    board.addEventListener("click", (event)=>{
+  };
+
+
+  board.addEventListener("click", (event)=>{
         console.log(event.target.id);
         const row = event.target.id[0];
         const col = event.target.id[2];
@@ -62,18 +68,26 @@ function startNewGame(){
         switchPlayer();
     });
 
-   document.getElementById('reset').addEventListener('click', (event)=>{
+  document.getElementById('reset').addEventListener('click', (event)=>{
    startNewGame()
    });
+
+  resetScoreboard.addEventListener("click", (event) => {
+    player1score.innerText = `${gameState.playerNames[0]}'s score: 0`;
+    player2score.innerText = `${gameState.playerNames[1]}'s score: 0`;
+    gameState.wins[0] = 0;
+    gameState.wins[1] = 0;
+  });
 
    submit.addEventListener("click", (event)=>{
    
    });
     
-   span2.addEventListener("click", (event)=>{
+   checkWins.addEventListener("click", (event)=>{
     displayScore();
    })
         
+  
     function switchPlayer() {
         if (gameState.currentPlayer === "X") {
           gameState.currentPlayer = "O";
@@ -88,16 +102,26 @@ function startNewGame(){
   makePlayer();
 
   function displayScore() {
-    alert.player1score.innerText = `${gameState.playerNames[0]}'s score is ${gameState.wins[0]}`;
+    player1score.innerText = `${gameState.playerNames[0]}'s score is ${gameState.wins[0]}`;
     player2score.innerText = `${gameState.playerNames[1]}'s score is ${gameState.wins[1]}`;
   }
-    function checkWin() {win = board[0] && board[0] === board[1] && board[0] === board[2] ? board[0] : null;
+  displayScore();
+
+  function checkWin() {
+    let winner = null;
+    winningCombinations.forEach(function(winningCombinations, index) {
+        if (board[winningCombinations[0]] && board[winningCombinations[0]] === board[winningCombinations[1]] && board[winningCombinations[0]] === board[winningCombinations[2]]) winner = board[winningCombinations[0]];
+        });
+        return winner ? winner : board.includes('') ? null : 'T';
+};
+
       // Maybe this calls other helper functions?
       // checkRow()
       // checkColumn()
       // checkDiagonals()
-    }
-    checkWin();
+
+  
+  checkWin();
     
     
     // ### What order do those functions need to execute in?
