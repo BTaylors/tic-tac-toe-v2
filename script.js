@@ -1,5 +1,5 @@
 
-const gameState = {
+let gameState = {
     board: [
       [null, null, null],
       [null, null, null],
@@ -8,7 +8,7 @@ const gameState = {
     currentPlayer: "X",
     playerNames: ["Player 1", "Player 2"],
     currentPlayeridx: 0,
-    wins: { 0: 0, 1: 0 },
+    wins: { 0: 0, 1: 0 },};
     winningCombinations: [
       [0, 1, 2],
       [3, 4, 5],
@@ -18,11 +18,11 @@ const gameState = {
       [2, 5, 8],
       [0, 4, 8],
       [2, 4, 6]
-    ]};
-  
-const board = document.querySelector(".board");
-
-  
+    ]
+let board = document.querySelector(".board");
+let currentPlayer = "X";
+let win;
+let reset = document.querySelector("#reset")
     for (let i = 0; i < 3; i++) {
       for (let j = 0; j < 3; j++) {
         const cell = document.createElement("div");
@@ -35,7 +35,23 @@ const board = document.querySelector(".board");
     // ### Make references to the DOM elements you want to click on
     
     // - Remember the concept of event delegation, you only need to put event listeners on parent elements.
-    
+        function renderBoard(){
+        for (let i = 0; i < 3; i++){
+          for (let j = 0; j <3; j++) {
+            const cell = document.getElementById(`${i}-${j}`);
+            cell.innerText = gameState.board[i][j];
+          }
+        }
+      }    
+      
+function startNewGame(){  
+  gameState.board = [
+  [null, null, null],
+  [null, null, null],
+  [null ,null, null],
+  ];
+        renderBoard();
+    };
     board.addEventListener("click", (event)=>{
         console.log(event.target.id);
         const row = event.target.id[0];
@@ -44,44 +60,23 @@ const board = document.querySelector(".board");
         console.log("Game State:", gameState);
         renderBoard();
         switchPlayer();
-    //   console.log(event.target);
-    //   const idArray = event.target.id;
-    //   console.log(idArray.split(''));
-
-    //   const splitArray = idArray.split('');
-    // //   const row = parseInt(splitArray[0]);
-    // //   const col = parseInt(splitArray[2]); 
-    //   gameState.board[row][col] = "X";
-    // console.log("Game State: ", gameState);
-    //     renderBoard();
-    //     switchPlayer();
       // Figure out how to get the coordinates off event object (e.target.value)
       // Use those coordinates to reference indexes in our gameState.board
       // Set the position in our board to the current player
     });
-  
-    function renderBoard(){
-      for (let i = 0; i < 3; i++){
-        for (let j = 0; j <3; j++) {
-          const cell = document.getElementById(`${i}-${j}`);
-          cell.innerText = gameState.board[i][j];
-        }
-      }
-    }
-    renderBoard();
-  
-    function startNewGame() {
-		score = {
-			"X": 0,
-			"O": 0,
-		};
-		moves = 0;
-		turn = "X";
-		boxes.forEach(function (cell) {
-			cell.innerHTML = EMPTY;
-		});
-	}
-    startNewGame();
+
+   document.getElementById('reset').addEventListener('click', (event)=>{
+   startNewGame()
+   });
+    
+        
+
+// trying to clear the board
+
+
+
+
+
     // ### Rendering the current state of the game information to the DOM
     
     // - Be able to write functions which will loop over your board in state, and reflect the data acordingly to the page
@@ -108,16 +103,16 @@ const board = document.querySelector(".board");
         } else {gameState.currentPlayer = "X"};
       }
 
-    function switchMarkers() {
-      gameState.move++;
-      if (gameState.move % 2 === 0) {
-        return 'X';
-      }
-      else {
-        return 'O'
-      }
-      }
-      switchMarkers();
+    // function switchMarkers() {
+    //   gameState.move++;
+    //   if (gameState.move % 2 === 0) {
+    //     return 'X';
+    //   }
+    //   else {
+    //     return 'O'
+    //   }
+    //   }
+    //   switchMarkers();
   
   
     function makePlayer() {    
@@ -125,20 +120,22 @@ const board = document.querySelector(".board");
     //   const player2 = newPlayer(prompt("Choose player 2 name :")); // Create player 2
     if(gameState.currentPlayer === "X") {
     gameState.player2 = "O";
-  } else if(gameState.currentPlayer === 'player2'){
+  } else if(gameState.currentPlayer === "X"){
     gameState.player1 = "O";
   }};
   makePlayer();
 
   function resetBoard(){
+
     
   }
-    function checkWin() {
+    function checkWin() {win = board[0] && board[0] === board[1] && board[0] === board[2] ? board[0] : null;
       // Maybe this calls other helper functions?
       // checkRow()
       // checkColumn()
       // checkDiagonals()
     }
+    checkWin();
     
     
     // ### What order do those functions need to execute in?
