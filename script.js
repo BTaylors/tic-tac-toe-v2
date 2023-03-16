@@ -1,15 +1,15 @@
 let turn = "X";
 let wins;
-const cell = document.querySelector(".cell");
 let board = document.querySelector(".board");
 let reset = document.querySelector("#resetButton");
 let submit = document.querySelector("#submitName");
 let p1 = document.querySelector("#player1Name");
 let p2 = document.querySelector("#player2Name");
 const scoreboard = document.querySelector("#scoreboard");
-const player1Form = document.querySelector("#submitName");
-const form = document.getElementById("form1");
+const form1 = document.querySelector("#form1");
 const log = document.getElementById("log");
+const cell = document.querySelector(".cell");
+const playerStatus = document.querySelector("#playerStatus")
 const gameState = {
   board: [
     [null, null, null],
@@ -18,11 +18,13 @@ const gameState = {
   ],
   currentPlayeridx: 0,
   currentPlayer: "X",
-  playerNames: ["p1, p2"],
+  playerNames: ["Player 1, Player 2"],
   // player1score: 0,
   // player2score: 0,
-  wins: { 0: 0, 1: 0 },};
-
+  
+  wins: { 0: 0, 1: 0 },
+};
+  
   const winningCombinations = [
     [0-0, 0-1, 0-2],
     [1-0, 1-1, 1-2],
@@ -119,6 +121,8 @@ board.addEventListener("click", (event)=>{
       const row = event.target.id[0];
       const col = event.target.id[2];
       gameState.board[row][col] = gameState.currentPlayer;
+      // if(gameState.cell.innerText == "X") {
+      //   return;}
       // if(gameState.board.innerText != "") {
       //   return;
       // };
@@ -130,7 +134,7 @@ board.addEventListener("click", (event)=>{
       switchPlayer();
   });
 
-player1Form.addEventListener("submit", (event) => {
+form.addEventListener("submit", (event) => {
   event.preventDefault();
   gameState.playerNames[0] = event.target[0].value;
   gameState.playerNames[1] = event.target[1].value;
@@ -139,13 +143,6 @@ player1Form.addEventListener("submit", (event) => {
   playerStatus.innerText = gameState.playerNames[0] + "'s turn";
 });
 
-
-
-// submit.addEventListener('click',(event)=>{
-// submitName();
-// displayNames();
-
-// });
 
 
 
