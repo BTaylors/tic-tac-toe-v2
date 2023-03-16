@@ -10,6 +10,9 @@ font-size:30px;
 color:black;
 text-align:center;
 justify-content: center;
+border-style:dotted;
+padding:15px;
+margin-top:10px;
 }
 
 h2 {display:flex;
@@ -42,12 +45,10 @@ body {display:flex;
     justify-content: center;
 }
 
-#bottomButtons { display:grid;
-    align-items:center;
-    justify-content: center;
+#bottomButtons {
 }
 
-#reset:hover, #span2:hover, #computer:hover {
+#reset:hover, #checkWins:hover, #playComputer:hover, #resetScoreboard:hover, #submitName:hover {
     background-color:rgb(132, 228, 255);
 }
 
@@ -60,7 +61,7 @@ body {display:flex;
     padding:4px;
 }
 
-#span2 {
+#checkWins {
     background-color: antiquewhite;
     margin:10px;
     border-style:solid;
@@ -69,7 +70,16 @@ body {display:flex;
     padding:4px;
 }
 
-#computer {
+#playComputer {
+    background-color: antiquewhite;
+    margin:10px;
+    border-style:solid;
+    border-width: 2px;
+    border-radius: 20%;
+    padding:4px;
+}
+
+#resetScoreboard {
     background-color: antiquewhite;
     margin:10px;
     border-style:solid;
@@ -81,15 +91,35 @@ body {display:flex;
     border: 2px solid black;
 }
 
-.nameInput {
-    
-
-}
-
 .all {
     display:flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     justify-content: space-between;
+    border-style:solid;
+    background-color: lightgrey;
+
+}
+
+#submitName {
+    background-color: antiquewhite;
+}
+
+#player1span {
+    display:flex;
+border-style:solid;
+border-color: black;
+border-width: 2px;
+padding:10px;
+background-color: rgb(182, 80, 80);
+}
+
+#player2span {
+    display:flex;
+    border-style:solid;
+    border-color: black;
+    border-width: 2px;
+    background-color: rgb(182, 80, 80);
+    padding:10px;
 }

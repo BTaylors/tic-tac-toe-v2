@@ -65,7 +65,14 @@ function startNewGame(){
    document.getElementById('reset').addEventListener('click', (event)=>{
    startNewGame()
    });
+
+   submit.addEventListener("click", (event)=>{
+   
+   });
     
+   span2.addEventListener("click", (event)=>{
+    displayScore();
+   })
         
     function switchPlayer() {
         if (gameState.currentPlayer === "X") {
@@ -81,7 +88,7 @@ function startNewGame(){
   makePlayer();
 
   function displayScore() {
-    player1score.innerText = `${gameState.playerNames[0]}'s score is ${gameState.wins[0]}`;
+    alert.player1score.innerText = `${gameState.playerNames[0]}'s score is ${gameState.wins[0]}`;
     player2score.innerText = `${gameState.playerNames[1]}'s score is ${gameState.wins[1]}`;
   }
     function checkWin() {win = board[0] && board[0] === board[1] && board[0] === board[2] ? board[0] : null;
