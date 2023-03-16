@@ -13,35 +13,41 @@
   <div class="all">
 <div><h1>TIC-TAC-TOE</h1></div>
   <div><h2>Enter your name!</h2></div>
+
   <div class="nameInput">
-  <span id="player1span"><form id=“player1form”>
-    <label for=“player1-name”>Player 1 Name:</label>
-    <input type=“text” id=“player1-name” name=“player1-name” />
-    <button id=submitName type=“submit”>Submit</button>
+  <form id=“form1”>
+    <span id="player1span">
+    <label for=“player1Name”>Player 1 Name:</label>
+    <input type=“text” id=“player1Name” name=“player1Name” />
+    <button id=submitName type=“submit” value="submit">Submit</button>
   </form>
+  
 </span>
   </br>
+
+<form id="form2">
   <span id="player2span">
-  <form id="player2form">
-    <label for=“player2-name”>Player 2 Name:</label>
-    <input type=“text” id=“player2-name” name=“player2-name” />
-    <button id=submitName type=“submit”>Submit</button>
+    <label for=“player2Name”>Player 2 Name:</label>
+    <input type=“text” id=“player2Name” name=“player2Name” />
+    <button id=submitName type=“submit” value="submit">Submit</button>
   </form>
 </span>
 </div>
+
+
 <div class="board">
-  <div id="strike" class ="strike-diagonal-1"></div>
+  <!-- <div id="strike" class ="strike"></div> -->
   </div>
 
 <div id="bottomButtons">
-  <button id=reset>Reset</button>
+  <button id=resetButton>Reset</button>
   <button id=playComputer>Play Computer</button>
   <button id=resetScoreboard>Reset Scoreboard</button>
   </div>
     
 <div id=“scoreboard”>
-    <h2 id=“player1-name”>'s Score:</h2>
-    <h2 id=“player2-name”>'s Score:</h2>
+    <h2><p id="log"></p><span id="player1score"></span></h2>
+    <h2><span id=“player2Name”></span><span id="player2score"></span></h2>
 </div>
 </body>
 </html>
