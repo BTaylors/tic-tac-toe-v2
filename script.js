@@ -60,9 +60,6 @@ function startNewGame(){
         console.log("Game State:", gameState);
         renderBoard();
         switchPlayer();
-      // Figure out how to get the coordinates off event object (e.target.value)
-      // Use those coordinates to reference indexes in our gameState.board
-      // Set the position in our board to the current player
     });
 
    document.getElementById('reset').addEventListener('click', (event)=>{
@@ -70,54 +67,12 @@ function startNewGame(){
    });
     
         
-
-// trying to clear the board
-
-
-
-
-
-    // ### Rendering the current state of the game information to the DOM
-    
-    // - Be able to write functions which will loop over your board in state, and reflect the data acordingly to the page
-    
-    function renderGame() {
-      // let cell = [i];
-      // let i = 0;
-      // let winner = 'no';
-      // while ((i < gameState.length) && (winner != 'yes'))
-      // {
-      //   let lastPlayer = '';
-      //   let location = '';
-      //       }
-        }
-      // Call this function after you've changed your state values
-      // Make references to DOM elements, and set the innerText,
-      // or innerHTML to reflect our gameState.board
-    // - Reference the demo going over editing state, and rendering the board to the DOM -> [Loop Demo][loopdemo]
-    
-    // ### What other functions may you need?
     function switchPlayer() {
         if (gameState.currentPlayer === "X") {
           gameState.currentPlayer = "O";
         } else {gameState.currentPlayer = "X"};
       }
-
-    // function switchMarkers() {
-    //   gameState.move++;
-    //   if (gameState.move % 2 === 0) {
-    //     return 'X';
-    //   }
-    //   else {
-    //     return 'O'
-    //   }
-    //   }
-    //   switchMarkers();
-  
-  
     function makePlayer() {    
-    //   const player1 = newPlayer(prompt("Choose player 1 name :")); // Create player 1
-    //   const player2 = newPlayer(prompt("Choose player 2 name :")); // Create player 2
     if(gameState.currentPlayer === "X") {
     gameState.player2 = "O";
   } else if(gameState.currentPlayer === "X"){
@@ -125,9 +80,9 @@ function startNewGame(){
   }};
   makePlayer();
 
-  function resetBoard(){
-
-    
+  function displayScore() {
+    player1score.innerText = `${gameState.playerNames[0]}'s score is ${gameState.wins[0]}`;
+    player2score.innerText = `${gameState.playerNames[1]}'s score is ${gameState.wins[1]}`;
   }
     function checkWin() {win = board[0] && board[0] === board[1] && board[0] === board[2] ? board[0] : null;
       // Maybe this calls other helper functions?

@@ -6,11 +6,18 @@
 
 h1 {display:flex;
     font-family:impact;
-font-size:25px;
+font-size:30px;
 color:black;
 text-align:center;
 justify-content: center;
 }
+
+h2 {display:flex;
+font-family: monospace;
+font-size: 23px;
+text-align:center;
+justify-content: center;
+padding:20px;}
 
 
 .board {
@@ -40,7 +47,7 @@ body {display:flex;
     justify-content: center;
 }
 
-#reset:hover, #span2:hover {
+#reset:hover, #span2:hover, #computer:hover {
     background-color:rgb(132, 228, 255);
 }
 
@@ -62,6 +69,27 @@ body {display:flex;
     padding:4px;
 }
 
+#computer {
+    background-color: antiquewhite;
+    margin:10px;
+    border-style:solid;
+    border-width: 2px;
+    border-radius: 20%;
+    padding:4px;
+}
 .cell {
     border: 2px solid black;
+}
+
+.nameInput {
+    
+
+}
+
+.all {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-between;
 }
