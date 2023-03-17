@@ -1,10 +1,10 @@
 
 const board = document.querySelector(".board");
 const reset = document.querySelector("#resetButton");
-const submit = document.querySelector("#submitName");
-const player1 = document.querySelector("#player1Name");
-const player2 = document.querySelector("#player2Name");
-const scoreboard = document.querySelector("#scoreboard");
+const submit = document.querySelector("#submit");
+let player1 = document.querySelector("#player1-Name");
+let player2 = document.querySelector("#player2-Name");
+let scoreboard = document.querySelector("#scoreboard");
 const cell = document.querySelector(".cell");
 
 const gameState = {
@@ -18,7 +18,7 @@ const gameState = {
   currentPlayeridx: 0,
   wins: { 0: 0, 1: 0 },
 };
-const form1 = document.querySelector("#form1");
+const form = document.querySelector("#playerForm");
 const playerStatus = document.querySelector("#playerStatus");
 const player1score = document.querySelector("#player1score");
 const player2score = document.querySelector("#player2score");
@@ -55,6 +55,7 @@ function renderGame(){
     };
   }};
   renderGame();
+renderBoard();
 
 
 function renderBoard(){
@@ -65,6 +66,7 @@ function renderBoard(){
         }
       }
     };
+renderBoard();
 displayScore();
 
 function switchPlayer() {
@@ -90,16 +92,16 @@ board.addEventListener("click", (event)=>{
       gameState.board[row][col] = gameState.currentPlayer;
       renderBoard();
       switchPlayer();
-      gameState.currentPlayer === "x"
-      ?gameState.playerNames[0] + "'s turn"
-      :gameState.playerNames[1] + "'s turn";
+      gameState.currentPlayer === "x";
+      gameState.playerNames[0] + "'s turn";
+      gameState.playerNames[1] + "'s turn";
   });
 
 reset.addEventListener('click', (event)=>{
 startNewGame()
 });
 
-form1.addEventListener("submit", (event) => {
+form.addEventListener("submit", (event) => {
   event.preventDefault();
   gameState.playerNames[0] = event.target[0].value;
   gameState.playerNames[1] = event.target[1].value;
