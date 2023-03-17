@@ -18,7 +18,7 @@ const gameState = {
   currentPlayeridx: 0,
   wins: { 0: 0, 1: 0 },
 };
-const form = document.querySelector("#playerForm");
+const form = document.querySelector("#form");
 const playerStatus = document.querySelector("#playerStatus");
 const player1score = document.querySelector("#player1score");
 const player2score = document.querySelector("#player2score");
@@ -97,9 +97,6 @@ board.addEventListener("click", (event)=>{
       gameState.playerNames[1] + "'s turn";
   });
 
-reset.addEventListener('click', (event)=>{
-startNewGame()
-});
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
@@ -110,6 +107,9 @@ form.addEventListener("submit", (event) => {
   playerStatus.innerText = gameState.playerNames[0] + "'s turn";
 });
 
+reset.addEventListener('click', (event)=>{
+startNewGame()
+});
 
 function displayScore() {
   player1score.innerText = `${gameState.player1}'s score is ${gameState.wins[0]}`;
@@ -181,25 +181,6 @@ function checkDiagonals(){
   checkWin();
   startNewGame();
 
-
-
-
-
-
-
-
-
-// displayNames();
-
-
-
-    // Maybe this calls other helper functions?
-    // checkRow()
-    // checkColumn()
-    // checkDiagonals()
-
-
-  
   
   // ### What order do those functions need to execute in?
   
