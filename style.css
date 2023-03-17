@@ -50,7 +50,7 @@ body {display:flex;
     justify-content: center;
 }
 
-#resetButton:hover, #checkWins:hover, #playComputer:hover, #resetScoreboard:hover, #submitName:hover {
+#resetButton:hover, #checkWins:hover, #playComputer:hover, #resetScoreboard:hover, #submit:hover {
     background-color:rgb(132, 228, 255);
 }
 
@@ -108,7 +108,8 @@ body {display:flex;
 #player1span {
 display:flex;
 border-color: black;
-border-width: 2px;
+border-width: 1px;
+border-style:solid;
 padding:10px;
 background-color: rgb(182, 80, 80);
 text-align: center;

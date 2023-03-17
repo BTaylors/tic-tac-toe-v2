@@ -14,9 +14,7 @@ const gameState = {
     [null, null, null],
   ],
   currentPlayer: "X",
-  playerNames: ["Player 1, Player 2"],
-  // player1score: 0,
-  // player2score: 0,
+  playerNames: ["Player 1", "Player 2"],
   currentPlayeridx: 0,
   wins: { 0: 0, 1: 0 },
 };
@@ -62,7 +60,7 @@ function renderGame(){
 function renderBoard(){
       for (let i = 0; i < 3; i++){
         for (let j = 0; j <3; j++) {
-          let cell = document.getElementById(`${i}-${j}`);
+          const cell = document.getElementById(`${i}-${j}`);
           cell.innerText = gameState.board[i][j];
         }
       }
