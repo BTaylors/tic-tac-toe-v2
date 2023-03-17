@@ -19,6 +19,7 @@ const gameState = {
   wins: { 0: 0, 1: 0 },
 };
 const form = document.querySelector("#form");
+console.log(form);
 const playerStatus = document.querySelector("#playerStatus");
 const player1score = document.querySelector("#player1score");
 const player2score = document.querySelector("#player2score");
@@ -89,16 +90,23 @@ gameState.board = [
 board.addEventListener("click", (event)=>{
       let row = event.target.id[0];
       let col = event.target.id[2];
+      if(gameState.board[row][col] === null){
       gameState.board[row][col] = gameState.currentPlayer;
       renderBoard();
       switchPlayer();
       gameState.currentPlayer === "x";
       gameState.playerNames[0] + "'s turn";
       gameState.playerNames[1] + "'s turn";
-  });
+  };
+});
 
 
-form.addEventListener("submit", (event) => {
+reset.addEventListener('click', (event)=>{
+startNewGame()
+console.log('click');
+});
+
+form.addEventListener("submit", (event)=>{
   event.preventDefault();
   gameState.playerNames[0] = event.target[0].value;
   gameState.playerNames[1] = event.target[1].value;
@@ -107,13 +115,11 @@ form.addEventListener("submit", (event) => {
   playerStatus.innerText = gameState.playerNames[0] + "'s turn";
 });
 
-reset.addEventListener('click', (event)=>{
-startNewGame()
-});
+
 
 function displayScore() {
-  player1score.innerText = `${gameState.player1}'s score is ${gameState.wins[0]}`;
-  player2score.innerText = `${gameState.player2}'s score is ${gameState.wins[1]}`;
+  player1score.innerText = `${gameState.playerNames[0]}'s score is ${gameState.wins[0]}`;
+  player2score.innerText = `${gameState.playerNames[1]}'s score is ${gameState.wins[1]}`;
 };
 
 
