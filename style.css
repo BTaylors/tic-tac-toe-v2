@@ -22,7 +22,11 @@ text-align:center;
 justify-content: center;
 padding:20px;}
 
-
+#playerStatus {
+    color:black;
+    font-size: 15px;
+    font-family: monospace;
+}
 .board {
     display:grid;
     background-color: rgb(182, 80, 80);
@@ -103,20 +107,22 @@ body {display:flex;
 }
 #player1span {
 display:flex;
-border-style:solid;
 border-color: black;
 border-width: 2px;
 padding:10px;
 background-color: rgb(182, 80, 80);
+text-align: center;
+justify-content: center;
 }
 
 #player2span {
     display:flex;
-    border-style:solid;
     border-color: black;
     border-width: 2px;
     background-color: rgb(182, 80, 80);
     padding:10px;
+    text-align:center;
+    justify-content: center;
 }
 
 #strike {
