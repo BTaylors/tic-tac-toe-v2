@@ -1,8 +1,8 @@
-
 const board = document.querySelector(".board");
 const reset = document.querySelector("#resetButton");
-let player1 = document.querySelector("#player1-Name");
-let player2 = document.querySelector("#player2-Name");
+let playerNames = ["Player 1", "Player 2"];
+const player1 = document.querySelector("#player1-Name");
+const player2 = document.querySelector("#player2-Name");
 let scoreboard = document.querySelector("#scoreboard");
 const cell = document.querySelector(".cell");
 
@@ -106,8 +106,8 @@ form.addEventListener("submit", (event)=>{
   event.preventDefault();
   gameState.player1 = event.target[0].value;
   gameState.player2 = event.target[1].value;
-  player1score.innerText = `${gameState.player1-Name}'s score: 0`;
-  player2score.innerText = `${gameState.player2-Name}'s score: 0`;
+  player1score.innerText = `${gameState.playerNames[0]}'s score: 0`;
+  player2score.innerText = `${gameState.playerNames[1]}'s score: 0`;
 });
 
 
