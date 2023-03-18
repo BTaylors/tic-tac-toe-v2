@@ -1,7 +1,6 @@
 
 const board = document.querySelector(".board");
 const reset = document.querySelector("#resetButton");
-const submit = document.querySelector("#submit");
 let player1 = document.querySelector("#player1-Name");
 let player2 = document.querySelector("#player2-Name");
 let scoreboard = document.querySelector("#scoreboard");
@@ -18,8 +17,7 @@ const gameState = {
   currentPlayeridx: 0,
   wins: { 0: 0, 1: 0 },
 };
-const form = document.querySelector("#form");
-console.log(form);
+const form = document.getElementById("form");
 const playerStatus = document.querySelector("#playerStatus");
 const player1score = document.querySelector("#player1score");
 const player2score = document.querySelector("#player2score");
@@ -93,10 +91,8 @@ board.addEventListener("click", (event)=>{
       if(gameState.board[row][col] === null){
       gameState.board[row][col] = gameState.currentPlayer;
       renderBoard();
-      switchPlayer();
-      gameState.currentPlayer === "x";
-      gameState.playerNames[0] + "'s turn";
-      gameState.playerNames[1] + "'s turn";
+      switchPlayer()
+      playerStatus.innerText = "It is " + gameState.currentPlayer + "'s turn";
   };
 });
 
@@ -118,10 +114,12 @@ form.addEventListener("submit", (event)=>{
 
 
 function displayScore() {
+  playerStatus.innerText = `It is ${gameState.currentPlayer}'s turn`;
   player1score.innerText = `${gameState.playerNames[0]}'s score is ${gameState.wins[0]}`;
   player2score.innerText = `${gameState.playerNames[1]}'s score is ${gameState.wins[1]}`;
 };
-
+  renderBoard();
+  renderGame();
 
 
 
@@ -136,6 +134,14 @@ document.getElementById('resetScoreboard').addEventListener("click", (event) => 
 
 function checkWin() {
 let hasWon = false;
+for (let i = 0; i < 3; i++) {
+  if (
+    gameState.board[i][0] !== null &&
+    gameState.board[i][0] === gameState.board[i][1] &&
+    gameState.board[i][1] === gameState.board[i][2]
+  ) {
+    hasWon = true;
+}}};
 
 function checkRow(){
   for (let i = 0; i < 3; i++) {
@@ -180,7 +186,7 @@ function checkDiagonals(){
     let playerName = gameState.playerNames[gameState.currentPlayeridx];
     gameStatus.innerText = `${playerName}'s wins`;
     gameState.wins[gameState.currentPlayeridx]++;
-  }}};
+  }};
   checkRow();
   checkColumn();
   checkDiagonals();  
