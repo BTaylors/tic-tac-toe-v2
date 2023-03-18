@@ -104,11 +104,10 @@ console.log('click');
 
 form.addEventListener("submit", (event)=>{
   event.preventDefault();
-  gameState.playerNames[0] = event.target[0].value;
-  gameState.playerNames[1] = event.target[1].value;
-  player1score.innerText = `${gameState.playerNames[0]}'s score: 0`;
-  player2score.innerText = `${gameState.playerNames[1]}'s score: 0`;
-  playerStatus.innerText = gameState.playerNames[0] + "'s turn";
+  gameState.player1 = event.target[0].value;
+  gameState.player2 = event.target[1].value;
+  player1score.innerText = `${gameState.player1-Name}'s score: 0`;
+  player2score.innerText = `${gameState.player2-Name}'s score: 0`;
 });
 
 
