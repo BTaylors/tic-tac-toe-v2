@@ -27,6 +27,13 @@ padding:20px;}
     font-size: 15px;
     font-family: monospace;
 }
+
+#winStatus {
+    color:black;
+    font-size: 15px;
+    font-family: monospace;
+}
+
 .board {
     display:grid;
     background-color: rgb(182, 80, 80);

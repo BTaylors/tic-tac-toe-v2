@@ -1,10 +1,11 @@
 const board = document.querySelector(".board");
 const reset = document.querySelector("#resetButton");
-let playerNames = ["Player 1", "Player 2"];
+// let playerNames = ["Player 1", "Player 2"];
 const player1 = document.querySelector("#player1-Name");
 const player2 = document.querySelector("#player2-Name");
 let scoreboard = document.querySelector("#scoreboard");
 const cell = document.querySelector(".cell");
+const winStatus = document.querySelector("#winStatus");
 
 const gameState = {
   board: [
@@ -113,9 +114,11 @@ form.addEventListener("submit", (event)=>{
 
 
 function displayScore() {
+  winStatus.innerText = `${winStatus.innerText}`;
   playerStatus.innerText = `It is ${gameState.currentPlayer}'s turn`;
   player1score.innerText = `${gameState.playerNames[0]}'s score is ${gameState.wins[0]}`;
   player2score.innerText = `${gameState.playerNames[1]}'s score is ${gameState.wins[1]}`;
+  
 };
   renderBoard();
   renderGame();
@@ -179,17 +182,18 @@ function checkDiagonals(){
   ) {
     hasWon = true;
   } else {
-    gameStatus.innerText = "Draw!";
+    winStatus.innerText = "Draw!";
   }
   if (hasWon) {
     let playerName = gameState.playerNames[gameState.currentPlayeridx];
-    gameStatus.innerText = `${playerName}'s wins`;
+    winStatus.innerText = `${playerName} wins!`;
     gameState.wins[gameState.currentPlayeridx]++;
   }};
   checkRow();
   checkColumn();
   checkDiagonals();  
   checkWin();
+  displayScore();
   startNewGame();
 
   
