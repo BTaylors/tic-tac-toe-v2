@@ -141,14 +141,14 @@ function checkDiagonals() {
 		gameState.board[0][2] === gameState.board[1][1] &&
 		gameState.board[1][1] === gameState.board[2][0]
 	) {
-		gameState.hasWon = true;
+		gameState.hasWon = true && gameState.board !== null;
 	} else {
 		winStatus.innerText = "Draw!";
 	}
-	if ((gameState.hasWon = true)) {
+	if ((gameState.hasWon = true && gameState.board !== null)) {
 		let playerName = gameState.playerNames[gameState.currentPlayeridx];
 		winStatus.innerText = `${playerName} wins!`;
-		gameState.wins[gameState.currentPlayeridx]++;
+		// gameState.wins[gameState.currentPlayeridx]++;
 	}
 }
 
